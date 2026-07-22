@@ -1,5 +1,5 @@
-import 'package:base_structure/src/core/language/language_helper/language_manager.dart';
-import 'package:base_structure/src/core/navigation/app_router.dart';
+import 'package:weather_app/src/core/language/language_helper/language_manager.dart';
+import 'package:weather_app/src/core/navigation/app_router.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 

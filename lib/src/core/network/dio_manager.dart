@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:base_structure/src/core/utils/di.dart';
+import 'package:weather_app/src/core/utils/di.dart';
 import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
@@ -100,21 +100,21 @@ abstract class DioManager {
   }) {
     switch (response?.statusCode) {
       case 400:
-        return error ?? 'BadRequestFailure'.tr();
+        return error ?? 'network.BadRequestFailure'.tr();
       case 401:
-        return error ?? 'UnauthorizedFailure'.tr();
+        return error ?? 'network.UnauthorizedFailure'.tr();
       case 403:
-        return error ?? 'ForbiddenFailure'.tr();
+        return error ?? 'network.ForbiddenFailure'.tr();
       case 404:
-        return error ?? 'NotFoundFailure'.tr();
+        return error ?? 'network.NotFoundFailure'.tr();
       case 409:
-        return error ?? 'ConflictFailure'.tr();
+        return error ?? 'network.ConflictFailure'.tr();
       case 500:
-        return error ?? 'InternalServerErrorFailure'.tr();
+        return error ?? 'network.InternalServerErrorFailure'.tr();
       case 503:
-        return error ?? 'ServiceUnavailableFailure'.tr();
+        return error ?? 'network.ServiceUnavailableFailure'.tr();
       default:
-        return error ?? 'UnknownFailure'.tr();
+        return error ?? 'network.UnknownFailure'.tr();
     }
   }
 
@@ -125,21 +125,21 @@ abstract class DioManager {
   }) {
     switch (dioExceptionType) {
       case DioExceptionType.badCertificate:
-        return 'BadCertificateFailure'.tr();
+        return 'network.BadCertificateFailure'.tr();
       case DioExceptionType.connectionTimeout:
-        return 'ConnectTimeoutFailure'.tr();
+        return 'network.ConnectTimeoutFailure'.tr();
       case DioExceptionType.connectionError:
-        return 'ConnectionErrorFailure'.tr();
+        return 'network.ConnectionErrorFailure'.tr();
       case DioExceptionType.sendTimeout:
-        return 'SendTimeoutFailure'.tr();
+        return 'network.SendTimeoutFailure'.tr();
       case DioExceptionType.receiveTimeout:
-        return 'ReceiveTimeoutFailure'.tr();
+        return 'network.ReceiveTimeoutFailure'.tr();
       case DioExceptionType.badResponse:
         return getStatusExceptionMessage(response: response, error: error);
       case DioExceptionType.cancel:
-        return 'CancelRequestFailure'.tr();
+        return 'network.CancelRequestFailure'.tr();
       case DioExceptionType.unknown:
-        return 'UnKnownFailure'.tr();
+        return 'network.UnKnownFailure'.tr();
     }
   }
 }

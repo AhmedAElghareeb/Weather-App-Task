@@ -1,4 +1,4 @@
-import 'package:base_structure/src/core/network/models/pagination_model.dart';
+import 'package:weather_app/src/core/network/models/pagination_model.dart';
 
 class ApiResponseModel<T> {
   final String? code;

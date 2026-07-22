@@ -1,3 +1,7 @@
+/// ─────────────────────────────────────────────────────────────────────────────
+/// AppConstants — Global application constants
+/// ─────────────────────────────────────────────────────────────────────────────
 abstract class AppConstants {
-  static const String appName = 'Base Structure';
+  /// The display name of the application
+  static const String appName = 'Weather App';
 }

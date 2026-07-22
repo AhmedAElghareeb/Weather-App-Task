@@ -1,8 +1,8 @@
 // import 'package:flutter/foundation.dart';
 
-import 'package:base_structure/src/core/network/dio_manager.dart';
-import 'package:base_structure/src/core/network/models/api_response_model.dart';
-import 'package:base_structure/src/core/network/models/error_model.dart';
+import 'package:weather_app/src/core/network/dio_manager.dart';
+import 'package:weather_app/src/core/network/models/api_response_model.dart';
+import 'package:weather_app/src/core/network/models/error_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 

@@ -1,4 +1,4 @@
-import 'package:base_structure/src/core/helpers/prefs_helper.dart';
+import 'package:weather_app/src/core/helpers/prefs_helper.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

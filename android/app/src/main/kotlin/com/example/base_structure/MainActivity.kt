@@ -1,4 +1,4 @@
-package com.example.base_structure
+package com.weather.app
 
 import io.flutter.embedding.android.FlutterActivity
 

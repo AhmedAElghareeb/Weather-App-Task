@@ -1,129 +1,226 @@
-# Code Base
+# Weather App 🌤️
 
-A robust, scalable, and maintainable Flutter application architecture following modern best practices and clean code principles.
+A robust Flutter weather application that fetches and displays real-time weather information for any city worldwide,
+built with clean architecture principles and BLoC state management.
 
 ## 🚀 Features
 
-- **Clean Architecture**: Well-organized project structure with separation of concerns
-- **State Management**: BLoC pattern for predictable and testable state management
-- **Dependency Injection**: GetIt for efficient service management
-- **Internationalization**: Multi-language support with Easy Localization
-- **Responsive Design**: Adaptive UI using Flutter ScreenUtil
-- **Navigation**: Declarative routing with Go Router
-- **Network Layer**: Dio-based HTTP client with logging and error handling
-- **Secure Storage**: Encrypted local storage for sensitive data
-- **Theme System**: Dynamic theming with dark/light mode support
-- **Error Handling**: Comprehensive error management and user feedback
+- **Live Weather Data**: Search any city and get real-time weather conditions from WeatherAPI.
+- **Offline Caching**: Automatically caches the last searched weather data for offline viewing.
+- **Reset Search**: A reset button clears the loaded weather data, input fields, and cached state to start a clean
+  search.
+- **Security & Configuration**: Loads API credentials securely from a `.env` file at runtime.
+- **Clean Architecture**: Well-organized project structure with separation of concerns.
+- **State Management**: BLoC/Cubit pattern for predictable and testable state management.
+- **Dependency Injection**: GetIt for efficient service management.
+- **Internationalization**: Multi-language support (English & Arabic) with Easy Localization.
+- **Responsive Design**: Adaptive UI using Flutter ScreenUtil for all screen sizes.
+- **Navigation**: Declarative routing with Go Router.
+- **Premium UI**: Glassmorphism cards, dynamic gradients (day/night), and smooth animations.
+- **Error Handling**: Comprehensive error management with user-friendly messages.
+- **Theme System**: Dynamic theming with dark/light mode support.
 
-## 📱 Tech Stack
+---
+
+## 📱 Screenshots & Adding Media
+
+The app features:
+
+- **Splash Screen**: Animated weather icon with cloud and sun, auto-navigates to main screen.
+- **Weather Dashboard**: Immersive gradient background, glassmorphism weather card, city search.
+- **Offline Mode**: Red banner indicator when showing cached data.
+- **Reset Controls**: Easily clear search query/data to start over.
+
+### 📸 How to Add Screenshots to this README
+
+To display screenshots in this file, follow these simple steps:
+
+1. **Capture Screenshots**:
+   Take screenshots or recordings of the app on your emulator or real device.
+
+2. **Save Images in the Workspace**:
+   Create a dedicated screenshots directory inside the assets folder:
+   ```bash
+   mkdir assets/screenshots
+   ```
+   Save your images there (e.g., `splash.png`, `dashboard.png`, `offline.png`).
+
+3. **Link Screenshots in Markdown**:
+   Use standard Markdown image syntax to link them:
+   ```markdown
+   ![Splash Screen](assets/screenshots/splash.jpeg)
+   ![Home Screen](assets/screenshots/home.jpeg)
+   ![Search1 Screen](assets/screenshots/search1.jpeg)
+   ![Search2 Screen](assets/screenshots/search2.jpeg)
+   ![Offline View Screen](assets/screenshots/offlineview.jpeg)
+   ```
+
+4. **Optionally side-by-side (using HTML table)**:
+   ```html
+   <p align="center">
+     <img src="assets/screenshots/splash.jpeg" width="30%" />
+     <img src="assets/screenshots/home.jpeg" width="30%" />
+     <img src="assets/screenshots/search1.jpeg" width="30%" />
+     <img src="assets/screenshots/search2.jpeg" width="30%" />
+     <img src="assets/screenshots/offlineview.jpeg" width="30%" />
+   </p>
+   ```
+
+---
+
+## 🏗️ Tech Stack
 
 ### Core Dependencies
-- **Flutter SDK**: >=3.4.0 <4.0.0 => **3.32.5**
+
+- **Flutter SDK**: ^3.8.1
 - **State Management**: [flutter_bloc](https://pub.dev/packages/flutter_bloc) ^9.1.1
+- **Environment Configuration**: [flutter_dotenv](https://pub.dev/packages/flutter_dotenv) ^6.0.1
 - **Routing**: [go_router](https://pub.dev/packages/go_router) ^17.0.0
 - **Dependency Injection**: [get_it](https://pub.dev/packages/get_it) ^9.2.0
-- **Networking**: [dio](https://pub.dev/packages/dio) ^5.9.1
+- **Networking**: [dio](https://pub.dev/packages/dio) ^5.9.2
 - **Localization**: [easy_localization](https://pub.dev/packages/easy_localization) ^3.0.8
+- **Functional Programming**: [dartz](https://pub.dev/packages/dartz) ^0.10.1
 
 ### UI & Utilities
-- **Responsive Design**: [flutter_screenutil](https://pub.dev/packages/flutter_screenutil) ^5.9.3
-- **Toast Messages**: [fluttertoast](https://pub.dev/packages/fluttertoast) ^9.0.0
-- **Pull to Refresh**: [pull_to_refresh](https://pub.dev/packages/pull_to_refresh) ^2.0.0
-- **Icons**: [cupertino_icons](https://pub.dev/packages/cupertino_icons) ^1.0.6
 
-### Storage & Data
+- **Responsive Design**: [flutter_screenutil](https://pub.dev/packages/flutter_screenutil) ^5.9.3
+- **Data Models**: [equatable](https://pub.dev/packages/equatable) ^2.0.8
+
+### Storage & Caching
+
 - **Local Storage**: [shared_preferences](https://pub.dev/packages/shared_preferences) ^2.5.3
 - **Secure Storage**: [flutter_secure_storage](https://pub.dev/packages/flutter_secure_storage) ^10.0.0
-- **Data Models**: [equatable](https://pub.dev/packages/equatable) ^2.0.8, [dartz](https://pub.dev/packages/dartz) ^0.10.1
 
 ### Development Tools
-- **Code Quality**: [flutter_lints](https://pub.dev/packages/flutter_lints) ^3.0.0
+
+- **Code Quality**: [flutter_lints](https://pub.dev/packages/flutter_lints) ^5.0.0
 - **Network Logging**: [pretty_dio_logger](https://pub.dev/packages/pretty_dio_logger) ^1.4.0
+
+---
 
 ## 🏗️ Project Structure
 
 ```
 lib/
-├── main.dart                 # App entry point
+├── main.dart                          # App entry point (loads dotenv configs)
 └── src/
-    ├── core/                 # Core utilities and shared components
-    │   ├── components/       # Reusable UI components
-    │   ├── constants/        # App constants and configurations
-    │   ├── extensions/       # Dart extensions
-    │   ├── helpers/          # Helper utilities
-    │   ├── language/         # Internationalization setup
-    │   ├── navigation/       # Routing configuration
-    │   ├── network/          # API and network layer
-    │   └── utils/            # Utility functions and DI
-    └── features/             # Feature modules
-        ├── app.dart          # Main app widget
-        └── layout/           # Layout components
+    ├── core/                          # Core utilities and shared components
+    │   ├── components/                # Reusable UI components
+    │   ├── constants/                 # App constants (names, cache keys)
+    │   ├── extensions/                # Dart extensions
+    │   ├── helpers/                   # Helper utilities
+    │   ├── language/                  # Internationalization setup
+    │   ├── navigation/                # GoRouter routing configuration
+    │   │   ├── app_router.dart        # Route tree & navigation helpers
+    │   │   └── app_routes.dart        # Route path constants
+    │   ├── network/                   # Network & API layer
+    │   │   ├── api_endpoints.dart     # Loads API key from dotenv asset
+    │   │   ├── api_helper.dart        # Standardized error handling mixin
+    │   │   ├── dio_manager.dart       # HTTP client abstraction
+    │   │   ├── bloc_observer.dart     # BLoC state monitoring
+    │   │   └── models/               # Shared data models
+    │   └── utils/                     # Utility functions and DI
+    │       ├── di.dart                # GetIt dependency injection setup
+    │       ├── app_theme/             # Theme configuration (light/dark)
+    │       └── interceptor.dart       # Dio request interceptors
+    └── features/                      # Feature modules
+        ├── app.dart                   # Root MaterialApp widget
+        ├── start/                     # Startup flow
+        │   └── splash/               # Animated splash screen
+        └── weather/                   # 🌤️ Weather feature (Clean Architecture)
+            ├── cubit/                 # State management (search & reset logic)
+            │   ├── weather_cubit.dart 
+            │   └── weather_state.dart 
+            ├── data/                  # Data layer
+            │   ├── models/
+            │   │   └── weather_model.dart  
+            │   └── service/
+            │       └── weather_service.dart # API calls + caching logic
+            └── presentation/          # UI layer
+                ├── screens/
+                │   └── weather_screen.dart  
+                └── widgets/
+                    └── weather_body.dart    # Dashboard & clear actions
 ```
+
+---
 
 ## 🛠️ Architecture Overview
 
-### Clean Architecture Principles
-- **Separation of Concerns**: Each layer has distinct responsibilities
-- **Dependency Inversion**: High-level modules don't depend on low-level modules
-- **Single Responsibility**: Each class has one reason to change
-- **Open/Closed Principle**: Open for extension, closed for modification
+### Clean Architecture with BLoC Pattern
 
-### Key Components
+```
+┌─────────────────────────────────────────────┐
+│              Presentation Layer              │
+│  (WeatherScreen → WeatherBody → UI Widgets)  │
+├─────────────────────────────────────────────┤
+│              Business Logic Layer            │
+│  (WeatherCubit → manages WeatherState)       │
+├─────────────────────────────────────────────┤
+│              Data Layer                      │
+│  (WeatherService → Dio + SharedPreferences)  │
+└─────────────────────────────────────────────┘
+```
 
-#### Network Layer
-- **Dio Manager**: Centralized HTTP client configuration
-- **API Helper**: Simplified API communication
-- **Error Handling**: Comprehensive error model and handling
-- **Logging**: Request/response logging for debugging
+- **Presentation**: Flutter widgets observe `WeatherState` via `BlocBuilder`
+- **Business Logic**: `WeatherCubit` orchestrates search and reset workflows.
+- **Data**: `WeatherServiceImpl` handles HTTP requests and caching fallback.
 
-#### State Management
-- **BLoC Pattern**: Reactive state management with clear separation
-- **Bloc Observer**: Centralized state change monitoring
-- **Event-Driven**: Predictable state transitions
+### Key Design Decisions
 
-#### Navigation
-- **Declarative Routing**: Type-safe navigation with Go Router
-- **Route Guards**: Protected routes and navigation control
-- **Deep Linking**: Support for deep linking and navigation persistence
+1. **State-Driven UI**: The entire UI is driven by `WeatherStatus` enum (initial → loading → loaded/error)
+2. **Offline-First Fallback**: On network failure, the cubit automatically falls back to cached data with an `isOffline`
+   flag
+3. **Reset Flow**: Resetting clears both the UI view state and the cached `last_searched_city` configuration.
 
-#### Localization
-- **Multi-language Support**: Easy translation management
-- **Dynamic Language Switching**: Runtime language changes
-- **Fallback Support**: Graceful handling of missing translations
+---
+
+## 🔧 Environment Configuration (.env)
+
+The application uses `flutter_dotenv` to separate code logic from configuration secrets.
+
+### Local Setup:
+
+1. Create a `.env` file at the root of the project:
+   ```env
+   WEATHER_API_KEY=your_real_api_key_here
+   ```
+2. The `.env` file is registered in the assets configuration of `pubspec.yaml` so that it is packaged with the
+   application.
+3. The `.env` configuration is ignored by Git automatically (configured in `.gitignore`) for security.
+4. **Default Fallback**: If the `.env` file is missing or doesn't define `WEATHER_API_KEY`, the application will
+   gracefully fall back to the default public API key to keep the app working.
+
+---
 
 ## 🚀 Getting Started
-
-### Prerequisites
-- Flutter SDK >=3.4.0
-- Dart SDK compatible with Flutter version
-- Android Studio / VS Code with Flutter extensions
 
 ### Installation
 
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd code_base
+   cd Weather-App-Task
    ```
 
-2. **Install dependencies**
+2. **Configure environment**
+   Create a `.env` file at the project root as explained above.
+
+3. **Install dependencies**
    ```bash
    flutter pub get
    ```
 
-3. **Run the app**
+4. **Run the app**
    ```bash
    flutter run
    ```
 
-### Available Commands
+### Command Reference
 
 ```bash
 # Run in debug mode
 flutter run
-
-# Run in release mode
-flutter run --release
 
 # Run tests
 flutter test
@@ -133,92 +230,41 @@ flutter analyze
 
 # Format code
 dart format .
-
-# Build APK
-flutter build apk
-
-# Build iOS
-flutter build ios
 ```
 
-## 📱 Platform Support
-
-- ✅ Android
-- ✅ iOS
+---
 
 ## 🧪 Testing
 
-The project follows test-driven development principles:
+The project includes comprehensive unit tests:
 
 ```bash
 # Run all tests
 flutter test
-
-# Run specific test file
-flutter test test/widget_test.dart
-
-# Generate test coverage
-flutter test --coverage
 ```
+
+### Test Coverage
+
+- **WeatherModel Tests** (11 tests): JSON parsing, serialization, round-trip, copyWith, Equatable equality, null
+  handling
+- **WeatherState & Cubit Tests** (9 tests): Transitions (success, error, offline cache fallback, load last city, and
+  resetWeather)
+
+---
 
 ## 📝 Code Quality
 
 ### Linting Rules
-- **flutter_lints**: Official Flutter linting rules
-- **Custom Rules**: Project-specific quality gates
-- **Prefer Const**: Immutable widget construction
-- **Single Quotes**: Consistent code formatting
 
-### Code Style
-- **Effective Dart**: Following official Dart style guide
-- **Clean Code**: Readable and maintainable code
-- **Documentation**: Comprehensive API documentation
+- **flutter_lints**: Official Flutter linting rules.
+- **Senior-Level Comments**: Every file includes comprehensive documentation explaining architecture, key decisions, and
+  non-obvious logic.
 
-## 🔧 Configuration
-
-### Environment Setup
-1. **Translation Files**: Add translations to `assets/translations/`
-2. **API Configuration**: Set up base URLs and endpoints
-3. **Theme Customization**: Modify app themes in `core/utils/app_theme/`
-4. **DI Setup**: Register dependencies in `core/utils/di.dart`
-
-### Build Configuration
-- **Development**: Debug mode with logging enabled
-- **Production**: Optimized release builds
-- **Environment-specific**: Different configs per environment
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-### Development Guidelines
-- Follow the existing code style
-- Write tests for new features
-- Update documentation
-- Ensure all tests pass
+---
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🙏 Acknowledgments
-
-- Flutter team for the amazing framework
-- Contributors and the open-source community
-- Package authors for their valuable libraries
-
-## 📞 Support
-
-For support and questions:
-- Create an issue on GitHub
-- Check the documentation
-- Review existing issues and discussions
-- Phone 01156750391 || 01500029701 || 01064503827
-- Email ahmed.elghareeb1166@gmail.com
 
 ---
 

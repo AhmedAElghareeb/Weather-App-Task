@@ -1,14 +1,20 @@
-import 'package:base_structure/src/core/constants/app_const.dart';
-import 'package:base_structure/src/core/navigation/app_router.dart';
-import 'package:base_structure/src/core/utils/app_theme/app_colors.dart';
-import 'package:base_structure/src/core/utils/app_theme/app_theme.dart';
-import 'package:base_structure/src/core/utils/app_theme/theme_provider.dart';
+import 'package:weather_app/src/core/constants/app_const.dart';
+import 'package:weather_app/src/core/navigation/app_router.dart';
+import 'package:weather_app/src/core/utils/app_theme/app_theme.dart';
+import 'package:weather_app/src/core/utils/app_theme/theme_provider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+/// ─────────────────────────────────────────────────────────────────────────────
+/// MyApp — The root widget of the Weather App
+/// ─────────────────────────────────────────────────────────────────────────────
+/// Configures the application-wide settings:
+/// - [ScreenUtilInit] for responsive design across different screen sizes
+/// - [ThemeCubit] for dynamic light/dark mode switching
+/// - [MaterialApp.router] with GoRouter for declarative navigation
+/// - [EasyLocalization] delegates for multi-language support
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
@@ -23,9 +29,9 @@ class _MyAppState extends State<MyApp> {
     _initializeServices();
   }
 
+  /// Placeholder for initializing external services (Firebase, analytics, etc.)
   Future<void> _initializeServices() async {
-    /// To Do Initialize Services ...
-    /// Firebase, Pusher, Location
+    /// Add service initialization here as needed
   }
 
   @override
@@ -36,51 +42,32 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
+      /// Design size based on a standard mobile viewport
       designSize: const Size(428, 926),
       minTextAdapt: true,
       splitScreenMode: true,
       ensureScreenSize: true,
       builder: (cx, child) => BlocProvider(
+        /// ThemeCubit manages light/dark mode preference persistence
         create: (context) => ThemeCubit()..init(),
         child: BlocBuilder<ThemeCubit, ThemeState>(
-          builder: (context, themeState) => RefreshConfiguration(
-            headerBuilder: () => const MaterialClassicHeader(),
-            footerBuilder: () => ClassicFooter(
-              loadStyle: LoadStyle.ShowWhenLoading,
-              loadingText: 'loadingMore'.tr(),
-              noDataText: '',
-              failedText: 'failed'.tr(),
-              idleText: 'canLoading'.tr(),
-              canLoadingText: 'canLoading'.tr(),
-              textStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w700,
-                color: AppColors.black,
-              ),
-            ),
-            headerTriggerDistance: 10,
-            maxOverScrollExtent: 50,
-            maxUnderScrollExtent: 0,
-            enableScrollWhenRefreshCompleted: true,
-            enableLoadingWhenFailed: true,
-            hideFooterWhenNotFull: false,
-            enableBallisticLoad: true,
-            child: MaterialApp.router(
-              debugShowCheckedModeBanner: false,
-              title: AppConstants.appName,
-              theme: AppTheme.light,
-              darkTheme: AppTheme.dark,
-              themeMode: themeState.themeMode,
-              routerConfig: AppRouter.router,
-              localizationsDelegates: context.localizationDelegates,
-              supportedLocales: context.supportedLocales,
-              locale: context.locale,
-              builder: (context, child) => MediaQuery(
-                data: MediaQuery.of(
-                  context,
-                ).copyWith(textScaler: const TextScaler.linear(1.0)),
-                child: child!,
-              ),
+          builder: (context, themeState) => MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            title: AppConstants.appName,
+            theme: AppTheme.light,
+            darkTheme: AppTheme.dark,
+            themeMode: themeState.themeMode,
+            routerConfig: AppRouter.router,
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
+
+            /// Prevent system text scaling from breaking the UI layout
+            builder: (context, child) => MediaQuery(
+              data: MediaQuery.of(
+                context,
+              ).copyWith(textScaler: const TextScaler.linear(1.0)),
+              child: child!,
             ),
           ),
         ),
