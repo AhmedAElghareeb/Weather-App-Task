@@ -1,15 +1,15 @@
-import 'package:weather_app/src/core/helpers/prefs_helper.dart';
-import 'package:weather_app/src/core/language/language_helper/language_helper.dart';
-import 'package:weather_app/src/core/language/language_helper/language_manager.dart';
-import 'package:weather_app/src/core/network/bloc_observer.dart';
-import 'package:weather_app/src/core/utils/di.dart';
-import 'package:weather_app/src/features/app.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:weather_app/src/core/helpers/prefs_helper.dart';
+import 'package:weather_app/src/core/language/language_helper/language_helper.dart';
+import 'package:weather_app/src/core/language/language_helper/language_manager.dart';
+import 'package:weather_app/src/core/network/bloc_observer.dart';
+import 'package:weather_app/src/core/utils/di.dart';
+import 'package:weather_app/src/features/app.dart';
 
 void main() async {
   /// flutter binding
@@ -32,6 +32,8 @@ void main() async {
 
   /// bloc observer
   Bloc.observer = AppBlocObserver();
+
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
 
   /// run app
   runApp(

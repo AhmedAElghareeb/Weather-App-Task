@@ -2,8 +2,10 @@ import 'dart:ui';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:weather_app/src/core/utils/app_spaces.dart';
 
 import '../../cubit/weather_cubit.dart';
 
@@ -35,29 +37,37 @@ class _WeatherBodyState extends State<WeatherBody> {
         final isDay = state.weatherData?.current.isDay == 1;
         final hasData = state.status == WeatherStatus.loaded;
 
-        return Scaffold(
-          // Immersive design: no AppBar, filling the screen with the gradient background.
-          body: Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: (hasData && !isDay)
-                    ? [
-                        const Color(0xFF1A1A2E),
-                        const Color(0xFF16213E),
-                      ] // Night gradient
-                    : [const Color(0xFF4A90E2), const Color(0xFF50E3C2)],
-                // Day gradient
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
+        return AnnotatedRegion<SystemUiOverlayStyle>(
+          value: const SystemUiOverlayStyle(
+            statusBarColor: Colors.transparent,
+            statusBarIconBrightness: Brightness.light,
+            statusBarBrightness: Brightness.dark,
+            systemNavigationBarColor: Colors.transparent,
+            systemNavigationBarIconBrightness: Brightness.light,
+          ),
+          child: Scaffold(
+            extendBody: true,
+            extendBodyBehindAppBar: true,
+            // Immersive design: no AppBar, filling the screen with the gradient background.
+            body: Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: (hasData && !isDay)
+                      ? [
+                          const Color(0xFF1A1A2E),
+                          const Color(0xFF16213E),
+                        ] // Night gradient
+                      : [const Color(0xFF4A90E2), const Color(0xFF50E3C2)],
+                  // Day gradient
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
               ),
-            ),
-            child: SafeArea(
-              top: false,
-              bottom: true,
               child: Column(
                 children: [
+                  AppSpaces.verticalSpace7,
                   _buildSearchBar(context, state),
                   Expanded(child: _buildContent(context, state)),
                 ],
