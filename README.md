@@ -21,50 +21,23 @@ built with clean architecture principles and BLoC state management.
 - **Theme System**: Dynamic theming with dark/light mode support.
 
 ---
+## 📱 Application Screenshots
 
-## 📱 Screenshots & Adding Media
+<p align="center">
+  <img src="assets/screenshots/splash.jpeg" width="18%" alt="Splash Screen"/>
+  <img src="assets/screenshots/home.jpeg" width="18%" alt="Home Screen"/>
+  <img src="assets/screenshots/search1.jpeg" width="18%" alt="Search Screen"/>
+  <img src="assets/screenshots/search2.jpeg" width="18%" alt="Search Result"/>
+  <img src="assets/screenshots/offlineview.jpeg" width="18%" alt="Offline Mode"/>
+</p>
 
-The app features:
-
-- **Splash Screen**: Animated weather icon with cloud and sun, auto-navigates to main screen.
-- **Weather Dashboard**: Immersive gradient background, glassmorphism weather card, city search.
-- **Offline Mode**: Red banner indicator when showing cached data.
-- **Reset Controls**: Easily clear search query/data to start over.
-
-### 📸 How to Add Screenshots to this README
-
-To display screenshots in this file, follow these simple steps:
-
-1. **Capture Screenshots**:
-   Take screenshots or recordings of the app on your emulator or real device.
-
-2. **Save Images in the Workspace**:
-   Create a dedicated screenshots directory inside the assets folder:
-   ```bash
-   mkdir assets/screenshots
-   ```
-   Save your images there (e.g., `splash.png`, `dashboard.png`, `offline.png`).
-
-3. **Link Screenshots in Markdown**:
-   Use standard Markdown image syntax to link them:
-   ```markdown
-   ![Splash Screen](assets/screenshots/splash.jpeg)
-   ![Home Screen](assets/screenshots/home.jpeg)
-   ![Search1 Screen](assets/screenshots/search1.jpeg)
-   ![Search2 Screen](assets/screenshots/search2.jpeg)
-   ![Offline View Screen](assets/screenshots/offlineview.jpeg)
-   ```
-
-4. **Optionally side-by-side (using HTML table)**:
-   ```html
-   <p align="center">
-     <img src="assets/screenshots/splash.jpeg" width="30%" />
-     <img src="assets/screenshots/home.jpeg" width="30%" />
-     <img src="assets/screenshots/search1.jpeg" width="30%" />
-     <img src="assets/screenshots/search2.jpeg" width="30%" />
-     <img src="assets/screenshots/offlineview.jpeg" width="30%" />
-   </p>
-   ```
+<p align="center">
+  <b>Splash</b> &nbsp;&nbsp;&nbsp;
+  <b>Home</b> &nbsp;&nbsp;&nbsp;
+  <b>Search</b> &nbsp;&nbsp;&nbsp;
+  <b>Result</b> &nbsp;&nbsp;&nbsp;
+  <b>Offline</b>
+</p>
 
 ---
 
