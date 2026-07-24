@@ -15,10 +15,8 @@ built with clean architecture principles and BLoC state management.
 - **Dependency Injection**: GetIt for efficient service management.
 - **Internationalization**: Multi-language support (English & Arabic) with Easy Localization.
 - **Responsive Design**: Adaptive UI using Flutter ScreenUtil for all screen sizes.
-- **Navigation**: Declarative routing with Go Router.
 - **Premium UI**: Glassmorphism cards, dynamic gradients (day/night), and smooth animations.
 - **Error Handling**: Comprehensive error management with user-friendly messages.
-- **Theme System**: Dynamic theming with dark/light mode support.
 
 ---
 ## 📱 Application Screenshots
@@ -48,7 +46,6 @@ built with clean architecture principles and BLoC state management.
 - **Flutter SDK**: ^3.8.1
 - **State Management**: [flutter_bloc](https://pub.dev/packages/flutter_bloc) ^9.1.1
 - **Environment Configuration**: [flutter_dotenv](https://pub.dev/packages/flutter_dotenv) ^6.0.1
-- **Routing**: [go_router](https://pub.dev/packages/go_router) ^17.0.0
 - **Dependency Injection**: [get_it](https://pub.dev/packages/get_it) ^9.2.0
 - **Networking**: [dio](https://pub.dev/packages/dio) ^5.9.2
 - **Localization**: [easy_localization](https://pub.dev/packages/easy_localization) ^3.0.8
